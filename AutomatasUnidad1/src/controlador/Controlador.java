@@ -54,5 +54,18 @@ public class Controlador extends Modelo implements InterfaceCadenas{
         }
     }
     
+    //se verifica que la cadena que se ingresa no sea la misma
+    public boolean verificarCadena(String cadena){
+        for (int i = 0; i < cadenas.size(); i++) {
+            if (cadena.equals(cadenas.get(i))) {
+                System.out.println(cadena);
+                return true;
+            }else{
+            
+            }
+            
+        }
+        return false;
+    }
    
 }
