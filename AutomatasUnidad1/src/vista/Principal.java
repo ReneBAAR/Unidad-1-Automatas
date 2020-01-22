@@ -6,20 +6,18 @@
 package vista;
 
 import controlador.Controlador;
-import java.util.Arrays;
+import controlador.Validaciones;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Romario Fabian Lopez Santos
- *          Rene Ivan
- *          6A Automatas I
+ * @author Romario Fabian Lopez Santos Rene Ivan 6A Automatas I
  */
 public class Principal extends javax.swing.JFrame {
 
     Controlador c = new Controlador();
+    Validaciones v = new Validaciones();
     String cadena = "";
-    int contador = 0;
 
     /**
      * Creates new form Principla
@@ -159,28 +157,44 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnoActionPerformed
-            cadena += "1" ;
-            txtCadena.setText(cadena);
+        cadena += "1";
+        txtCadena.setText(cadena);
     }//GEN-LAST:event_btnUnoActionPerformed
 
     private void btnGenerarCadenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarCadenaActionPerformed
-        c.setCadenaNueva(cadena);
-        c.cadenas.add(cadena);
-        txtAreaCadenas.setText(c.getCadenaNueva());
-        cadena = "";
-        txtCadena.setText("");
+        if (txtCadena.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "No puede estar vacio");
+        } else {
+            if (!c.verificarCadena(cadena)) {
+                c.setCadenaNueva(cadena);
+                c.cadenas.add(cadena);
+                txtAreaCadenas.setText(c.getCadenaNueva());
+                cadena = "";
+                txtCadena.setText("");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Esta cadena ya esta guardada");
+                txtCadena.setText("");
+                cadena = "";
+            }
+
+        }
     }//GEN-LAST:event_btnGenerarCadenaActionPerformed
 
     private void btnCeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCeroActionPerformed
-            cadena += "0" ;
-            txtCadena.setText(cadena);
+        cadena += "0";
+        txtCadena.setText(cadena);
     }//GEN-LAST:event_btnCeroActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      int numero = Integer.parseInt(JOptionPane.showInputDialog(null,"Que cadena quiere conocer"));
-      c.numeroLinea();
-      JOptionPane.showMessageDialog(rootPane,"El tamaño de la cadena " + numero + "Es igual a  " + c.longitudCadena(numero));
-      
+        int numero1 = Integer.parseInt(JOptionPane.showInputDialog(null, "Que cadena quiere conocer"));
+        if (numero1 <= c.cadenas.size()) {
+            c.numeroLinea();
+            JOptionPane.showMessageDialog(rootPane, "El tamaño de la cadena   " + numero1 + "   Es igual a  " + c.longitudCadena(numero1));
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "La posicion : "+numero1 +" no existe");
+        }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnConcatenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConcatenarActionPerformed
