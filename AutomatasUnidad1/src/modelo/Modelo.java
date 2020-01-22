@@ -16,6 +16,7 @@ public class Modelo {
     private String cadenaGenerada = "";
     public String cadenaConcatenada ;
     public String cadenaExtra = "";
+    
     private int contadorLinea = 0;
     public ArrayList cadenas =  new ArrayList();
     public ArrayList concatenadas = new ArrayList();
