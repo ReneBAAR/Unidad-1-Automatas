@@ -24,10 +24,12 @@ public class Controlador extends Modelo implements InterfaceCadenas{
        concatenadas.add(cadenaConcatenada);
         setCadenaExtra(cadenaConcatenada);
     }
+    //
     public void vaciarCadena(){
         setCadenaGenerada("");
     }
     
+    //saca la longitud de cada una de las cadenas guardadas en el ArrayList
     public int longitudCadena(int numCadena){
         String cadena;
         int num;
@@ -44,6 +46,7 @@ public class Controlador extends Modelo implements InterfaceCadenas{
         }
     }
     
+    //Muestra las cadenas guardadas concatenadas en la consola
     public void verConcatenadas()
     {
         for (int i = 0; i < concatenadas.size(); i++) {

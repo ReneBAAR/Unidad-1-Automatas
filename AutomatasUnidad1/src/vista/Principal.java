@@ -11,7 +11,9 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author rfls_
+ * @author Romario Fabian Lopez Santos
+ *          Rene Ivan
+ *          6A Automatas I
  */
 public class Principal extends javax.swing.JFrame {
 
