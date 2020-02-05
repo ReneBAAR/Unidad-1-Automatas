@@ -6,35 +6,35 @@ import modelo.Modelo;
 
 /**
  *
- * @author Romario Fabian y Rene Ivan
- * Descripcion:
- * Este programa 
+ * @author Romario Fabian y Rene Ivan Descripcion: Este programa
  */
-public class Controlador extends Modelo implements InterfaceCadenas{
-   
+public class Controlador extends Modelo implements InterfaceCadenas {
+
+    
     //concatena las cadenas ya existentes
-    public void numeroDeCadenas(int numeros){
-         String cadenaNuevaConcatenada = "";
+    public void numeroDeCadenas(int numeros) {
+        String cadenaNuevaConcatenada = "";
         int numCadena;
         for (int i = 0; i < numeros; i++) {
-            numCadena = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese el numero de la cadena"));
+            numCadena = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el numero de la cadena"));
             cadenaNuevaConcatenada += cadenas.get(numCadena).toString();
         }
-       cadenaConcatenada = cadenaNuevaConcatenada;
-       concatenadas.add(cadenaConcatenada);
+        cadenaConcatenada = cadenaNuevaConcatenada;
+        concatenadas.add(cadenaConcatenada);
         setCadenaExtra(cadenaConcatenada);
     }
+
     //
-    public void vaciarCadena(){
+    public void vaciarCadena() {
         setCadenaGenerada("");
     }
-    
+
     //saca la longitud de cada una de las cadenas guardadas en el ArrayList
-    public int longitudCadena(int numCadena){
+    public int longitudCadena(int numCadena) {
         String cadena;
         int num;
         cadena = (String) cadenas.get(numCadena);
-        
+
         return num = cadena.length();
     }
 
@@ -45,27 +45,27 @@ public class Controlador extends Modelo implements InterfaceCadenas{
             System.out.println(cadenas.get(i));
         }
     }
-    
+
     //Muestra las cadenas guardadas concatenadas en la consola
-    public void verConcatenadas()
-    {
+    public void verConcatenadas() {
         for (int i = 0; i < concatenadas.size(); i++) {
             System.out.println(concatenadas.get(i));
         }
     }
-    
+
     //se verifica que la cadena que se ingresa no sea la misma
-    public boolean verificarCadena(String cadena){
+    public boolean verificarCadena(String cadena) {
         for (int i = 0; i < cadenas.size(); i++) {
             if (cadena.equals(cadenas.get(i))) {
                 System.out.println(cadena);
                 return true;
-            }else{
-            
+            } else {
+
             }
-            
+
         }
         return false;
     }
-   
+
+
 }

@@ -17,6 +17,8 @@ public class Modelo {
     public String cadenaConcatenada ;
     public String cadenaExtra = "";
     
+    public String cadenaBinario = "01";
+    
     private int contadorLinea = 0;
     public ArrayList cadenas =  new ArrayList();
     public ArrayList concatenadas = new ArrayList();

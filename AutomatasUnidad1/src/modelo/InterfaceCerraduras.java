@@ -9,6 +9,8 @@ package modelo;
  *
  * @author rfls_
  */
-public interface InterfaceCadenas {
-    public abstract void numeroLinea();    
+public interface InterfaceCerraduras {
+    public abstract String positiva(int k, char[] a);
+    public abstract String kleene(int k, char[] a);
+    public abstract String potencia(int valor, char[] a);
 }

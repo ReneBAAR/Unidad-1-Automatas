@@ -5,6 +5,7 @@
  */
 package vista;
 
+import controlador.Cerraduras;
 import controlador.Controlador;
 import controlador.Validaciones;
 import javax.swing.JOptionPane;
@@ -17,7 +18,9 @@ public class Principal extends javax.swing.JFrame {
 
     Controlador c = new Controlador();
     Validaciones v = new Validaciones();
+    Cerraduras ce = new Cerraduras();
     String cadena = "";
+    char[] a = c.cadenaBinario.toCharArray();
 
     /**
      * Creates new form Principla
@@ -45,7 +48,10 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtConcat = new javax.swing.JTextArea();
         btnConcatenar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnKleene = new javax.swing.JButton();
+        btnPositiva = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtCerraduras = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,12 +98,23 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnKleene.setText("Kleene");
+        btnKleene.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnKleeneActionPerformed(evt);
             }
         });
+
+        btnPositiva.setText("Positiva");
+        btnPositiva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPositivaActionPerformed(evt);
+            }
+        });
+
+        txtCerraduras.setColumns(20);
+        txtCerraduras.setRows(5);
+        jScrollPane3.setViewportView(txtCerraduras);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,26 +124,30 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtCadena, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnGenerarCadena)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnConcatenar))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton2)
+                                    .addComponent(btnKleene)
                                     .addComponent(btnUno)
                                     .addComponent(btnCero)
-                                    .addComponent(jButton1))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                    .addComponent(jButton1)
+                                    .addComponent(btnPositiva))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtCadena, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnGenerarCadena)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -137,19 +158,23 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(txtCadena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGenerarCadena))
                 .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnCero)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnUno)
-                        .addGap(57, 57, 57)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnConcatenar)
+                        .addGap(27, 27, 27)
+                        .addComponent(btnKleene)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                        .addComponent(btnPositiva))
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -204,9 +229,15 @@ public class Principal extends javax.swing.JFrame {
         txtConcat.setText(c.getCadenaExtra());
     }//GEN-LAST:event_btnConcatenarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        c.verConcatenadas();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnKleeneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKleeneActionPerformed
+      int k = Integer.parseInt(JOptionPane.showInputDialog("¿A que potencia deseas elevar el alfabeto?"));
+        txtCerraduras.setText(ce.kleene(k, a));
+    }//GEN-LAST:event_btnKleeneActionPerformed
+
+    private void btnPositivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPositivaActionPerformed
+        int k = Integer.parseInt(JOptionPane.showInputDialog("¿A que potencia deseas elevar el alfabeto?"));
+        txtCerraduras.setText(ce.positiva(k, a));
+    }//GEN-LAST:event_btnPositivaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,13 +279,16 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btnCero;
     private javax.swing.JButton btnConcatenar;
     private javax.swing.JButton btnGenerarCadena;
+    private javax.swing.JButton btnKleene;
+    private javax.swing.JButton btnPositiva;
     private javax.swing.JButton btnUno;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea txtAreaCadenas;
     private javax.swing.JTextField txtCadena;
+    private javax.swing.JTextArea txtCerraduras;
     private javax.swing.JTextArea txtConcat;
     // End of variables declaration//GEN-END:variables
 }
